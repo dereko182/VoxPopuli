@@ -37,8 +37,8 @@
             <FormattedString>
               <FormattedString.Spans>
                 <Span Text="VoxPopuli" FontAttributes="Bold" />
-                <Span Text=" (voz del pueblo en latin)" FontAttributes="Italic"/>
-                <Span Text=", es una aplicacion para participar en campañas sociales o de caracter privado" />
+                <Span Text=" (Voz del pueblo en latin)" FontAttributes="Italic"/>
+                <Span Text=", Es una aplicación para participar en campañas sociales o de caracter privado" />
                 <Span Text="." />
               </FormattedString.Spans>
             </FormattedString>
@@ -48,7 +48,7 @@
           <Label.FormattedText>
             <FormattedString>
               <FormattedString.Spans>
-                <Span Text="Esta aplicion esta disponible en" />
+                <Span Text="Esta aplición esta disponible en" />
                 <Span Text=" "/>
                 <Span Text="iOS, Android, y Windows" FontAttributes="Bold" />
                 <Span Text="." />

@@ -23,12 +23,12 @@ namespace VoxPopuliApp
                 {
                     new NavigationPage(new ItemsPage())
                     {
-                        Title = "Browse",
+                        Title = "Campañas Activas",
                         Icon = Device.OnPlatform("tab_feed.png",null,null)
                     },
                     new NavigationPage(new AboutPage())
                     {
-                        Title = "About",
+                        Title = "Acerca de",
                         Icon = Device.OnPlatform("tab_about.png",null,null)
                     },
                 }
