@@ -25,7 +25,7 @@
           <Label.FormattedText>
             <FormattedString>
               <FormattedString.Spans>
-                <Span Text="VoxPopuliApp" FontAttributes="Bold" FontSize="22"/>
+                <Span Text="VoxPopuli" FontAttributes="Bold" FontSize="22"/>
                 <Span Text=" "/>
                 <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}"/>
               </FormattedString.Spans>
@@ -36,9 +36,9 @@
           <Label.FormattedText>
             <FormattedString>
               <FormattedString.Spans>
-                <Span Text="This app is written in C# and native APIs using the" />
-                <Span Text=" "/>
-                <Span Text="Xamarin Platform" FontAttributes="Bold" />
+                <Span Text="VoxPopuli" FontAttributes="Bold" />
+                <Span Text=" (voz del pueblo en latin)" FontAttributes="Italic"/>
+                <Span Text=", es una aplicacion para participar en campañas sociales o de caracter privado" />
                 <Span Text="." />
               </FormattedString.Spans>
             </FormattedString>
@@ -48,11 +48,10 @@
           <Label.FormattedText>
             <FormattedString>
               <FormattedString.Spans>
-                <Span Text="It shares code with its" />
+                <Span Text="Esta aplicion esta disponible en" />
                 <Span Text=" "/>
-                <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
-                <Span Text=" "/>
-                <Span Text="versions." />
+                <Span Text="iOS, Android, y Windows" FontAttributes="Bold" />
+                <Span Text="." />
               </FormattedString.Spans>
             </FormattedString>
           </Label.FormattedText>
