@@ -4,10 +4,10 @@ namespace VoxPopuliApp.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public Campania Item { get; set; }
+        public ItemDetailViewModel(Campania item = null)
         {
-            Title = item.Text;
+            Title = item.Nombre;
             Item = item;
         }
 
