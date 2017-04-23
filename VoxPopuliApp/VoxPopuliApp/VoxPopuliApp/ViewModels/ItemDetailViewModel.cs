@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using VoxPopuliApp.Helpers;
 using VoxPopuliApp.Models;
@@ -16,40 +19,79 @@ namespace VoxPopuliApp.ViewModels
         public Command CargaRespuesta { get; set; }
         public Command CargarSiguiente { get; set; }
         private int index = 0;
-        private int TipoCampania;
+        private int CampaniaID;
         private string textoBoton;
+        HttpClient client;
 
-        public Respuesta respuestaSeleccionada;
+        public Respuesta respuestaSeleccionada { get; set; }
 
         public ItemDetailViewModel(Rootobject item = null)
         {
             Title = item.CampaniaDetalle.First().Pregunta.Nombre;
             Item = item;
-            TipoCampania = item.CampaniaId;
+            CampaniaID = item.CampaniaId;
             TextoBoton = "Siguiente";
             Respuestas = new ObservableRangeCollection<Respuesta>();
             CargaRespuesta = new Command(async () => await ExecuteLoadRespuestasCommand());
             CargarSiguiente = new Command(() => ExecuteCargaSiguienteCommand());
+            client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000;
         }
 
-        private void ExecuteCargaSiguienteCommand()
+        private async void ExecuteCargaSiguienteCommand()
         {
             if (index < Item.CampaniaDetalle.Count() - 1)
             {
-                insertarRespuesta();
+                await insertarRespuesta();
                 index++;
+                if (index >= Item.CampaniaDetalle.Count() - 1)
+                {
+                    TextoBoton = "Terminar";
+                }
                 Respuestas.Clear();
                 Title = Item.CampaniaDetalle[index].Pregunta.Nombre;
                 GetRespuestas(); 
             }
-            else if (index == Item.CampaniaDetalle.Count() - 1)
-            {
-                TextoBoton = "Final";
-            }
-        }
-        private void insertarRespuesta()
-        {
 
+        }
+        private async Task insertarRespuesta()
+        {
+            string RestUrl = @"http://192.168.1.18/voxpopuli/api/RespuestaCampanias";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+            RespuestaCampania entidad = new RespuestaCampania
+            {
+                //CampaniaDetalleId = respuestaSeleccionada.RespuestaCampania[index].CampaniaDetalleId,
+                //CampaniaId = respuestaSeleccionada.RespuestaCampania[index].CampaniaId,
+                //ContadorRespuesta = 1,
+                //RespuestaId = respuestaSeleccionada.RespuestaId,
+                //OpcionRespuesta = 0,
+                //Fecha = DateTime.Now,
+                //Comentarios = "yeah!!!"
+                CampaniaDetalleId = 4,
+                CampaniaId = 1,
+                ContadorRespuesta = 1,
+                RespuestaId = 1,
+                OpcionRespuesta = 1,
+                Fecha = DateTime.Now,
+                Comentarios = "yeah!!!"
+            };
+
+            var json = JsonConvert.SerializeObject(entidad);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            try
+            {
+                response = await client.PostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine("Todo fain");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
         private async Task ExecuteLoadRespuestasCommand()
         {
@@ -85,7 +127,7 @@ namespace VoxPopuliApp.ViewModels
         {
             List<ListView> preguntas = new List<ListView>();
             List<Campaniadetalle> companiasdetalle = Item.CampaniaDetalle.ToList();
-            companiasdetalle = companiasdetalle.Where(w => w.CampaniaId == TipoCampania).ToList();
+            companiasdetalle = companiasdetalle.Where(w => w.CampaniaId == CampaniaID).ToList();
             List<Respuesta> respuestasOut = null;
 
             Label resp = new Label();
