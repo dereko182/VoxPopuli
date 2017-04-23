@@ -40,19 +40,24 @@ namespace VoxPopuliApp.ViewModels
 
         private async void ExecuteCargaSiguienteCommand()
         {
-            if (index < Item.CampaniaDetalle.Count() - 1)
+            try
             {
-                await insertarRespuesta();
-                index++;
-                if (index >= Item.CampaniaDetalle.Count() - 1)
+                if (index <= Item.CampaniaDetalle.Count() - 1)
                 {
-                    TextoBoton = "Terminar";
+                    await insertarRespuesta();
+                    index++;
+                    if (index >= Item.CampaniaDetalle.Count() - 1)
+                    {
+                        TextoBoton = "Terminar";
+                    }
+                    Respuestas.Clear();
+                    Title = Item.CampaniaDetalle[index].Pregunta.Nombre;
+                    GetRespuestas();
                 }
-                Respuestas.Clear();
-                Title = Item.CampaniaDetalle[index].Pregunta.Nombre;
-                GetRespuestas(); 
             }
-
+            catch (Exception ex)
+            {                
+            }
         }
         private async Task insertarRespuesta()
         {
@@ -66,15 +71,18 @@ namespace VoxPopuliApp.ViewModels
                 //RespuestaId = respuestaSeleccionada.RespuestaId,
                 //OpcionRespuesta = 0,
                 //Fecha = DateTime.Now,
-                //Comentarios = "yeah!!!"
-                CampaniaDetalleId = 4,
+                //Comentarios = "yeah!!!",
+                //PreguntaId = respuestaSeleccionada.ControlPregunta[index].PreguntaId
+                //CampaniaDetalleId = Item.CampaniaDetalle[index].CampaniaDetalleId,
+                CampaniaDetalleId = 0,
                 CampaniaId = 1,
                 ContadorRespuesta = 1,
-                RespuestaId = 1,
+                RespuestaId = respuestaSeleccionada.RespuestaId,
                 OpcionRespuesta = 1,
                 PreguntaId = 1,
                 Fecha = DateTime.Now,
-                Comentarios = "yeah!!!"
+                Comentarios = "",
+                PreguntaId = Item.CampaniaDetalle[index].PreguntaId
             };
 
             var json = JsonConvert.SerializeObject(entidad);
