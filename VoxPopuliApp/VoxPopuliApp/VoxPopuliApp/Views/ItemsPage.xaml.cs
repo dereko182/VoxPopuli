@@ -23,8 +23,7 @@ namespace VoxPopuliApp.Views
             var item = args.SelectedItem as Item;
             if (item == null)
                 return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(item));
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;

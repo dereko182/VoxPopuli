@@ -1,4 +1,5 @@
 ﻿
+using VoxPopuliApp.Models;
 using VoxPopuliApp.ViewModels;
 
 using Xamarin.Forms;
@@ -15,11 +16,18 @@ namespace VoxPopuliApp.Views
             InitializeComponent();
         }
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ItemDetailPage(Item viewModel)
         {
             InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
+            switch (viewModel.Tipo)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
         }
     }
 }

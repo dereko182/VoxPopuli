@@ -15,5 +15,13 @@
             get { return description; }
             set { SetProperty(ref description, value); }
         }
+
+        int tipo = 0;
+        public int Tipo
+        {
+            get { return tipo; }
+            set { SetProperty(ref tipo, value); }
+        }
+
     }
 }

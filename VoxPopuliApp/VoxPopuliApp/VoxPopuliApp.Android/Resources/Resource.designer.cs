@@ -2200,14 +2200,20 @@ namespace VoxPopuliApp.Droid
 			// aapt resource value: 0x7f0200a0
 			public const int mr_ic_play_light = 2130837664;
 			
-			// aapt resource value: 0x7f0200a3
-			public const int notification_template_icon_bg = 2130837667;
+			// aapt resource value: 0x7f0200a5
+			public const int notification_template_icon_bg = 2130837669;
 			
 			// aapt resource value: 0x7f0200a1
 			public const int profile_generic = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
 			public const int slideout = 2130837666;
+			
+			// aapt resource value: 0x7f0200a3
+			public const int tab_about = 2130837667;
+			
+			// aapt resource value: 0x7f0200a4
+			public const int tab_feed = 2130837668;
 			
 			static Drawable()
 			{
