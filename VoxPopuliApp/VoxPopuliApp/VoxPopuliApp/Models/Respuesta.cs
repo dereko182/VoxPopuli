@@ -11,7 +11,7 @@ namespace VoxPopuliApp.Models
         }
 
         public int RespuestaId { get; set; }
-        public string Respuesta { get; set; }
+        //public string Respuesta { get; set; }
         public string Descripcion { get; set; }
         public DateTime Fecha { get; set; }
 

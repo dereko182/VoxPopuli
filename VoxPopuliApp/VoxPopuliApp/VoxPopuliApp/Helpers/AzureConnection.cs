@@ -8,7 +8,20 @@ namespace VoxPopuliApp.Helpers
 
         public AzureConnection()
         {
-            client = new MobileServiceClient(@"http://voxpopuliapp.azurewebsites.net/");            
+            Client = new MobileServiceClient(@"http://voxpopuliapp.azurewebsites.net/");            
+        }
+
+        public MobileServiceClient Client
+        {
+            get
+            {
+                return client;
+            }
+
+            set
+            {
+                client = value;
+            }
         }
     }
 }
