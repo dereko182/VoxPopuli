@@ -1,3 +1,5 @@
+using System;
+
 namespace VoxPopuliApp.Models
 {
     public class ControlPregunta
