@@ -21,12 +21,12 @@ namespace VoxPopuliApp.ViewModels
             Items = new ObservableRangeCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var _item = item as Item;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
-            });
+            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            //{
+            //    var _item = item as Item;
+            //    Items.Add(_item);
+            //    await DataStore.AddItemAsync(_item);
+            //});
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -48,9 +48,9 @@ namespace VoxPopuliApp.ViewModels
                 MessagingCenter.Send(new MessagingCenterAlert
                 {
                     Title = "Error",
-                    Message = "Unable to load items.",
-                    Cancel = "OK"
-                }, "message");
+                    Message = "Imposible cargar campañas.",
+                    Cancel = "Aceptar"
+                }, "Aviso");
             }
             finally
             {
