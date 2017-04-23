@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Diagnostics;
 using VoxPopuliApp.Models;
 using VoxPopuliApp.ViewModels;
 
@@ -36,10 +36,19 @@ namespace VoxPopuliApp.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+            try
+            {
+                base.OnAppearing();
 
-            if (viewModel.Campanias.Count == 0)
-                viewModel.CargaCampaniasCommand.Execute(null);
+                if (viewModel.Campanias.Count == 0)
+                    viewModel.CargaCampaniasCommand.Execute(null);
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+                MessagingCenter.Send(this, ex.Message);
+            }
         }
     }
 }

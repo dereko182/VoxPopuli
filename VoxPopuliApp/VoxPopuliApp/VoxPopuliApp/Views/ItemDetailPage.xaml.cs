@@ -6,6 +6,7 @@ using VoxPopuliApp.ViewModels;
 
 using Xamarin.Forms;
 using VoxPopuliApp.Helpers;
+using System.Diagnostics;
 
 namespace VoxPopuliApp.Views
 {
@@ -35,15 +36,24 @@ namespace VoxPopuliApp.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Respuesta;
-            if (item == null)
-                return;
+            try
+            {
+                var item = args.SelectedItem as Respuesta;
+                if (item == null)
+                    return;
 
-            viewModel.respuestaSeleccionada = item;
-            //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+                viewModel.respuestaSeleccionada = item;
+                //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
-            // Manually deselect item
-            //ItemsListView.SelectedItem = null;
+                // Manually deselect item
+                //ItemsListView.SelectedItem = null;
+            }
+            catch (System.Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+                MessagingCenter.Send(this, ex.Message);
+            }
         }
 
     }

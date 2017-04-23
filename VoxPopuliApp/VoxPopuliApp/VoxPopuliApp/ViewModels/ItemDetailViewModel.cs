@@ -72,6 +72,7 @@ namespace VoxPopuliApp.ViewModels
                 ContadorRespuesta = 1,
                 RespuestaId = 1,
                 OpcionRespuesta = 1,
+                PreguntaId = 1,
                 Fecha = DateTime.Now,
                 Comentarios = "yeah!!!"
             };
@@ -85,6 +86,10 @@ namespace VoxPopuliApp.ViewModels
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("Todo fain");
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
                 }
             }
             catch (Exception ex)

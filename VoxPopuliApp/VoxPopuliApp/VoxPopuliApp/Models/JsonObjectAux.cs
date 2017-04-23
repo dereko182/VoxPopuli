@@ -79,6 +79,7 @@ namespace VoxPopuliApp.Models
         public int ContadorRespuesta { get; set; }
         public string Comentarios { get; set; }
         public DateTime Fecha { get; set; }
+        public int PreguntaId { get; set; }
     }
 
     public class CampaniaDetalle
