@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
   <string name="app_name">VoxPopuliApp.Android</string>
+  <color name="splash_background">#fb9d9d</color>
 </resources>
