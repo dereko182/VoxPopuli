@@ -39,7 +39,7 @@ namespace VoxPopuliApp.Views
             base.OnAppearing();
 
             if (viewModel.Campanias.Count == 0)
-                viewModel.CargaCampanias.Execute(null);
+                viewModel.CargaCampaniasCommand.Execute(null);
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using VoxPopuliApp.Helpers;
@@ -13,10 +16,17 @@ namespace VoxPopuliApp.Services
 {
     public class CampaniaDataStore : IDataStore<Campania>
     {
+        HttpClient client;
         IMobileServiceTable<Campania> _CampaniaTable;
         List<Campania> campanias;
         AzureConnection AzureClient = new AzureConnection();
         bool isInitialized;
+
+        public CampaniaDataStore()
+        {
+            client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000;
+        }
 
         public Task<bool> AddItemAsync(Campania item)
         {
@@ -35,25 +45,48 @@ namespace VoxPopuliApp.Services
 
         public async Task<IEnumerable<Campania>> GetItemsAsync(bool forceRefresh = false)
         {
-            await InitializeAsync();
+            try
+            {
+                //await InitializeAsync();
+                campanias = new List<Campania>();
 
-            _CampaniaTable = AzureClient.Client.GetTable<Campania>();
-            //campanias = await _CampaniaTable.ToListAsync();
-            isInitialized = true;
+                string RestUrl = @"http://192.168.1.18/voxpopuli/api/Campanias";
+
+                var uri = new Uri(string.Format(RestUrl, string.Empty));
+
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    campanias = JsonConvert.DeserializeObject<List<Campania>>(content);
+                }
+
+                isInitialized = true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                MessagingCenter.Send(new MessagingCenterAlert
+                {
+                    Title = "Error",
+                    Message = "Imposible cargar campañas.",
+                    Cancel = "Aceptar"
+                }, "Aviso");
+            }
 
             return campanias;
         }
 
         public async Task InitializeAsync()
         {
-            if (isInitialized)
-                return;
+            //if (isInitialized)
+            //    return;
 
-            campanias = new List<Campania>();
+//            campanias = new List<Campania>();
             var _items = new List<Campania>
             {
-                new Campania { CampaniaId = 1, Nombre = "YA ESTA", Descripcion="The cats are hungry"},
-                new Campania { CampaniaId = 2, Nombre = "VALIENDO", Descripcion="The cats are angry"},
+                new Campania { CampaniaId = 1, Nombre = "PRUEBA 1", Descripcion="TODOITEM"},
+                new Campania { CampaniaId = 2, Nombre = "PRUEBA 2", Descripcion="TODOITEM"},
             };
 
             foreach (Campania item in _items)
