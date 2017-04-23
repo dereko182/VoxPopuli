@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VoxPopuliApp.Helpers;
 using VoxPopuliApp.Models;
 
 using Xamarin.Forms;
@@ -12,7 +11,6 @@ namespace VoxPopuliApp.Services
 {
     public class MockDataStore : IDataStore<Item>
     {
-        AzureConnection AzureClient = new AzureConnection();
         bool isInitialized;
         List<Item> items;
 

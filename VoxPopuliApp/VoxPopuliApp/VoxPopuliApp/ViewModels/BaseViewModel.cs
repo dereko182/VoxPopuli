@@ -12,6 +12,7 @@ namespace VoxPopuliApp.ViewModels
         /// Get the azure service instance
         /// </summary>
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Campania> CampaniaStore => DependencyService.Get<IDataStore<Campania>>();     
 
         bool isBusy = false;
         public bool IsBusy

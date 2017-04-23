@@ -10,5 +10,18 @@ namespace VoxPopuliApp.Helpers
         {
             client = new MobileServiceClient(@"http://voxpopuliapp.azurewebsites.net/");            
         }
+
+        public MobileServiceClient Client
+        {
+            get
+            {
+                return client;
+            }
+
+            set
+            {
+                client = value;
+            }
+        }
     }
 }

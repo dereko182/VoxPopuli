@@ -20,7 +20,7 @@ namespace VoxPopuliApp.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as Campania;
             if (item == null)
                 return;
             await Navigation.PushAsync(new ItemDetailPage(item));
@@ -38,8 +38,8 @@ namespace VoxPopuliApp.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (viewModel.Campanias.Count == 0)
+                viewModel.CargaCampanias.Execute(null);
         }
     }
 }

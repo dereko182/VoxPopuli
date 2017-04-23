@@ -8,8 +8,5 @@ namespace VoxPopuliApp.Models
         public int RespuestaId { get; set; }
         public int Orden { get; set; }
         public DateTime Fecha { get; set; }
-
-        public Pregunta Pregunta { get; set; }
-        public Respuesta Respuesta { get; set; }
     }
 }
