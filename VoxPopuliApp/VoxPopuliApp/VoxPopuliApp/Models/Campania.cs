@@ -1,29 +1,25 @@
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
     public class Campania
     {
-        public Campania()
-        {
-            this.CampaniaDetalles = new List<CampaniaDetalle>();
-        }
-        
-        [JsonProperty("id")]
+        //public Campania()
+        //{
+        //    this.CampaniaDetalles = new List<CampaniaDetalle>();
+        //    this.ControlVotaciones = new List<ControlVotacion>();
+        //}
+
         public int CampaniaId { get; set; }
-        [JsonProperty("nombre")]
         public string Nombre { get; set; }
-        [JsonProperty("descripcion")]
         public string Descripcion { get; set; }
-        [JsonProperty("estatus")]
         public byte Estatus { get; set; }
-        [JsonProperty("fechainicia")]
+        public int TipoCampaniaId { get; set; }
         public DateTime FechaInicia { get; set; }
-        [JsonProperty("fechafinaliza")]
         public DateTime FechaFinaliza { get; set; }
 
-        public List<CampaniaDetalle> CampaniaDetalles { get; set; }
+        public CampaniaDetalle[] CampaniaDetalles { get; set; }
+        public ControlVotacion[] ControlVotaciones { get; set; }
     }
 }

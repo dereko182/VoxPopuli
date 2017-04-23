@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
@@ -11,5 +12,8 @@ namespace VoxPopuliApp.Models
         public int ContadorRespuesta { get; set; }
         public string Comentarios { get; set; }
         public DateTime Fecha { get; set; }
+
+        public CampaniaDetalle CampaniaDetalle { get; set; }
+        public RespuestaP Respuesta { get; set; }
     }
 }

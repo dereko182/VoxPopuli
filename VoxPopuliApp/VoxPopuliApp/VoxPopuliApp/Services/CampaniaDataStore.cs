@@ -58,6 +58,7 @@ namespace VoxPopuliApp.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
+                    List<Rootobject> data = JsonConvert.DeserializeObject<List<Rootobject>>(content);                                  
                     campanias = JsonConvert.DeserializeObject<List<Campania>>(content);
                 }
 
@@ -82,7 +83,7 @@ namespace VoxPopuliApp.Services
             //if (isInitialized)
             //    return;
 
-//            campanias = new List<Campania>();
+            //            campanias = new List<Campania>();
             var _items = new List<Campania>
             {
                 new Campania { CampaniaId = 1, Nombre = "PRUEBA 1", Descripcion="TODOITEM"},

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
@@ -9,5 +10,7 @@ namespace VoxPopuliApp.Models
         public string Latitud { get; set; }
         public string Longitud { get; set; }
         public DateTime Fecha { get; set; }
+
+        public Campania Campania { get; set; }
     }
 }

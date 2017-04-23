@@ -48,6 +48,7 @@
     <Compile Include="Models\ControlPregunta.cs" />
     <Compile Include="Models\ControlVotacion.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\JsonObjectAux.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Models\RespuestaCampania.cs" />
