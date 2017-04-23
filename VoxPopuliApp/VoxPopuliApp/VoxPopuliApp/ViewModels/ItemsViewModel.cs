@@ -12,14 +12,14 @@ namespace VoxPopuliApp.ViewModels
     public class ItemsViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Item> Items { get; set; }
-        public ObservableRangeCollection<Campania> Campanias { get; set; }
+        public ObservableRangeCollection<Rootobject> Campanias { get; set; }
         public Command LoadItemsCommand { get; set; }
         public Command CargaCampaniasCommand { get; set; }
 
         public ItemsViewModel()
         {            
             Title = "Campañas Activas";
-            Campanias = new ObservableRangeCollection<Campania>();
+            Campanias = new ObservableRangeCollection<Rootobject>();
             CargaCampaniasCommand = new Command(async () => await ExecuteLoadCampaniasCommand());
         }
 

@@ -20,7 +20,7 @@ namespace VoxPopuliApp.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Campania;
+            var item = args.SelectedItem as Rootobject;
             if (item == null)
                 return;
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));

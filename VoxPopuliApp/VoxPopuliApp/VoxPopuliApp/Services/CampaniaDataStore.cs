@@ -14,11 +14,11 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(VoxPopuliApp.Services.CampaniaDataStore))]
 namespace VoxPopuliApp.Services
 {
-    public class CampaniaDataStore : IDataStore<Campania>
+    public class CampaniaDataStore : IDataStore<Rootobject>
     {
         HttpClient client;
-        IMobileServiceTable<Campania> _CampaniaTable;
-        List<Campania> campanias;
+        IMobileServiceTable<Rootobject> _CampaniaTable;
+        List<Rootobject> campanias;
         AzureConnection AzureClient = new AzureConnection();
         bool isInitialized;
 
@@ -28,27 +28,27 @@ namespace VoxPopuliApp.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public Task<bool> AddItemAsync(Campania item)
+        public Task<bool> AddItemAsync(Rootobject item)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteItemAsync(Campania item)
+        public Task<bool> DeleteItemAsync(Rootobject item)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Campania> GetItemAsync(string id)
+        public Task<Rootobject> GetItemAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Campania>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Rootobject>> GetItemsAsync(bool forceRefresh = false)
         {
             try
             {
                 //await InitializeAsync();
-                campanias = new List<Campania>();
+                campanias = new List<Rootobject>();
 
                 string RestUrl = @"http://192.168.1.18/voxpopuli/api/Campanias";
 
@@ -59,7 +59,7 @@ namespace VoxPopuliApp.Services
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     List<Rootobject> data = JsonConvert.DeserializeObject<List<Rootobject>>(content);                                  
-                    campanias = JsonConvert.DeserializeObject<List<Campania>>(content);
+                    campanias = JsonConvert.DeserializeObject<List<Rootobject>>(content);
                 }
 
                 isInitialized = true;
@@ -84,13 +84,13 @@ namespace VoxPopuliApp.Services
             //    return;
 
             //            campanias = new List<Campania>();
-            var _items = new List<Campania>
+            var _items = new List<Rootobject>
             {
-                new Campania { CampaniaId = 1, Nombre = "PRUEBA 1", Descripcion="TODOITEM"},
-                new Campania { CampaniaId = 2, Nombre = "PRUEBA 2", Descripcion="TODOITEM"},
+                new Rootobject { CampaniaId = 1, Nombre = "PRUEBA 1", Descripcion="TODOITEM"},
+                new Rootobject { CampaniaId = 2, Nombre = "PRUEBA 2", Descripcion="TODOITEM"},
             };
 
-            foreach (Campania item in _items)
+            foreach (Rootobject item in _items)
             {
                 campanias.Add(item);
             }
@@ -108,7 +108,7 @@ namespace VoxPopuliApp.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateItemAsync(Campania item)
+        public Task<bool> UpdateItemAsync(Rootobject item)
         {
             throw new NotImplementedException();
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
-    public class ControlVotacion
+    public class ControlVotacionp
     {
         public int CampaniaId { get; set; }
         public string DeviceId { get; set; }

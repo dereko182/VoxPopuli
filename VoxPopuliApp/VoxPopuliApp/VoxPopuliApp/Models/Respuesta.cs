@@ -7,7 +7,7 @@ namespace VoxPopuliApp.Models
     {
         public RespuestaP()
         {
-            this.ControlPreguntas = new List<ControlPregunta>();
+           // this.ControlPreguntas = new List<ControlPregunta>();
             this.RespuestaCampanias = new List<RespuestaCampania>();
         }
 
@@ -16,7 +16,7 @@ namespace VoxPopuliApp.Models
         public string Descripcion { get; set; }
         public DateTime Fecha { get; set; }
 
-        public List<ControlPregunta> ControlPreguntas { get; set; }
+       // public List<ControlPregunta> ControlPreguntas { get; set; }
         public List<RespuestaCampania> RespuestaCampanias { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace VoxPopuliApp.Models
     {
         public PreguntaP()
         {
-            this.CampaniaDetalles = new List<CampaniaDetalle>();
-            this.ControlPreguntas = new List<ControlPregunta>();
+            //this.CampaniaDetalles = new List<CampaniaDetalle>();
+            //this.ControlPreguntas = new List<ControlPregunta>();
         }
 
         public int PreguntaId { get; set; }
@@ -17,7 +17,7 @@ namespace VoxPopuliApp.Models
         public int TipoControlId { get; set; }
 
         public TipoControl TipoControl { get; set; }
-        public List<CampaniaDetalle> CampaniaDetalles { get; set; }
-        public List<ControlPregunta> ControlPreguntas { get; set; }
+        //public List<CampaniaDetalle> CampaniaDetalles { get; set; }
+        //public List<ControlPregunta> ControlPreguntas { get; set; }
     }
 }

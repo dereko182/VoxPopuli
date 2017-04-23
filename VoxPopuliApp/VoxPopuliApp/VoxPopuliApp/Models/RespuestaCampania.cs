@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
-    public class RespuestaCampania
+    public class RespuestaCampaniaP
     {
         public int CampaniaDetalleId { get; set; }
         public int CampaniaId { get; set; }
@@ -12,8 +12,7 @@ namespace VoxPopuliApp.Models
         public int ContadorRespuesta { get; set; }
         public string Comentarios { get; set; }
         public DateTime Fecha { get; set; }
-
-        public CampaniaDetalle CampaniaDetalle { get; set; }
+        //public CampaniaDetalle CampaniaDetalle { get; set; }
         public RespuestaP Respuesta { get; set; }
     }
 }

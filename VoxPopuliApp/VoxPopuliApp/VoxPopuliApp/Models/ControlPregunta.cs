@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
-    public class ControlPregunta
+    public class ControlPreguntaP
     {
         public int PreguntaId { get; set; }
         public int RespuestaId { get; set; }

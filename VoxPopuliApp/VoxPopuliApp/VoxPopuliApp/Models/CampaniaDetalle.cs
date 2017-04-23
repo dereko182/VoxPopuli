@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VoxPopuliApp.Models
 {
-    public class CampaniaDetalle
+    public class CampaniaDetalleP
     {
         //public CampaniaDetalle()
         //{
