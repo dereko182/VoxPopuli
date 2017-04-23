@@ -16,9 +16,11 @@ namespace VoxPopuliApp.Views
             InitializeComponent();
         }
 
-        public ItemDetailPage(Campania viewModel)
+        public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
+
+            BindingContext = this.viewModel = viewModel;
         }
     }
 }

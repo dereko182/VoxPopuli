@@ -23,7 +23,7 @@ namespace VoxPopuliApp.Views
             var item = args.SelectedItem as Campania;
             if (item == null)
                 return;
-            await Navigation.PushAsync(new ItemDetailPage(item));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;

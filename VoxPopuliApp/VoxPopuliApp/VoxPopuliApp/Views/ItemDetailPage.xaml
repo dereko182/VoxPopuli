@@ -4,7 +4,7 @@
              x:Class="VoxPopuliApp.Views.ItemDetailPage"
              Title="{Binding Nombre}">
     <StackLayout Spacing="20" Padding="15">
-      <Label Text="{Binding Campania.Nombre}" FontSize="Medium"/>
-      <Label Text="{Binding Campania.Descripcion}" FontSize="Small"/>
+      <Label Text="{Binding Item.Nombre}" FontSize="Medium"/>
+      <Label Text="{Binding Item.Descripcion}" FontSize="Small"/>
     </StackLayout>
 </ContentPage>
