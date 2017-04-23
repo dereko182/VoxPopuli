@@ -16,18 +16,9 @@ namespace VoxPopuliApp.Views
             InitializeComponent();
         }
 
-        public ItemDetailPage(Item viewModel)
+        public ItemDetailPage(Campania viewModel)
         {
             InitializeComponent();
-            switch (viewModel.Tipo)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
         }
     }
 }

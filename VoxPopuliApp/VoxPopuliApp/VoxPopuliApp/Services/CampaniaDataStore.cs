@@ -6,14 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using VoxPopuliApp.Helpers;
 using VoxPopuliApp.Models;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(VoxPopuliApp.Services.CampaniaDataStore))]
 namespace VoxPopuliApp.Services
 {
     public class CampaniaDataStore : IDataStore<Campania>
     {
-        bool isInitialized;
         IMobileServiceTable<Campania> _CampaniaTable;
+        List<Campania> campanias;
         AzureConnection AzureClient = new AzureConnection();
+        bool isInitialized;
 
         public Task<bool> AddItemAsync(Campania item)
         {
@@ -32,16 +35,33 @@ namespace VoxPopuliApp.Services
 
         public async Task<IEnumerable<Campania>> GetItemsAsync(bool forceRefresh = false)
         {
+            await InitializeAsync();
+
             _CampaniaTable = AzureClient.Client.GetTable<Campania>();
-            List<Campania> campanias = await _CampaniaTable.ToListAsync();
+            //campanias = await _CampaniaTable.ToListAsync();
             isInitialized = true;
 
-            return campanias;            
+            return campanias;
         }
 
-        public Task InitializeAsync()
+        public async Task InitializeAsync()
         {
-            throw new NotImplementedException();
+            if (isInitialized)
+                return;
+
+            campanias = new List<Campania>();
+            var _items = new List<Campania>
+            {
+                new Campania { CampaniaId = 1, Nombre = "YA ESTA", Descripcion="The cats are hungry"},
+                new Campania { CampaniaId = 2, Nombre = "VALIENDO", Descripcion="The cats are angry"},
+            };
+
+            foreach (Campania item in _items)
+            {
+                campanias.Add(item);
+            }
+
+            isInitialized = true;
         }
 
         public Task<bool> PullLatestAsync()
